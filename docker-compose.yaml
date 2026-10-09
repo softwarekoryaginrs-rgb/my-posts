@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./.docker/php/Dockerfile
+    env_file: .env
+    ports:
+      - "${APP_PORT}:9000"
+    depends_on:
+      - database
+    volumes:
+      - ./:/var/www/app
+
+  web:
+    build:
+      context: .
+      dockerfile: ./.docker/nginx/Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      - app
+    volumes:
+      - ./:/var/www/app
+
+  node:
+    build:
+      context: .
+      dockerfile: ./.docker/node/Dockerfile
+    volumes:
+      - ./:/var/www/app
+      - node-modules:/var/www/app/node_modules
+
+  database:
+    image: postgres:16
+    env_file: .env
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_INITDB_ARGS: --auth-host=trust
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
+  node-modules:
