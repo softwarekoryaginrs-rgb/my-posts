@@ -1,0 +1,13 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    session: true
+    assets:
+        packages:
+            build:
+                json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
