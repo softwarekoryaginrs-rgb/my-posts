@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+$token-colors: (
+    $text-comment: ('comment', 'quote'),
+    $pink: ('keyword', 'selector-tag', 'doctag'),
+    $green: ('string', 'regexp', 'addition'),
+    $orange: ('number', 'literal', 'symbol', 'bullet'),
+    $cyan: ('title', 'section', 'attribute', 'name', 'tag', 'selector-id', 'selector-class'),
+    $yellow: ('type', 'built_in'),
+    $violet: ('variable', 'template-variable', 'attr', 'property'),
+    $text: ('params'),
+    $text-muted: ('meta'),
+    $red: ('deletion'),
+);
+
+@each $color, $tokens in $token-colors {
+    @each $token in $tokens {
+        .hljs-#{$token} {
+            color: $color;
+        }
+    }
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-title.class_ {
+    color: $yellow;
+}
+
+.hljs-meta .hljs-keyword {
+    color: $pink;
+}
+
+.hljs-meta .hljs-string {
+    color: $green;
+}
+
+.hljs-strong {
+    font-weight: 700;
+}

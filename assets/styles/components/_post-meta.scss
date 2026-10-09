@@ -1,0 +1,52 @@
+@use '../abstracts' as *;
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.5rem;
+    color: $text-muted;
+    @include mono(0.8rem);
+    letter-spacing: 0.01em;
+
+    &__sep {
+        color: $border;
+    }
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.1rem 0.6rem;
+    border: 1px solid $border;
+    border-radius: 999px;
+    background: $bg-elevated;
+    color: $violet;
+    @include mono(0.72rem);
+    line-height: 1.6;
+
+    &::before {
+        content: '#';
+        color: $text-muted;
+    }
+
+    // An icon replaces the "#" prefix.
+    &:has(.tag__icon)::before {
+        content: none;
+    }
+
+    &__icon {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+    }
+}

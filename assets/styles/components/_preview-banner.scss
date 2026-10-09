@@ -1,0 +1,26 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.preview-banner {
+    position: sticky;
+    top: 0.75rem;
+    z-index: 10;
+    margin-bottom: 2.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px dashed $yellow;
+    border-radius: $radius;
+    background: color.change($yellow, $alpha: 0.08);
+    backdrop-filter: blur(6px);
+    color: $text;
+    @include mono(0.8rem);
+
+    &__label {
+        margin-right: 0.5rem;
+        padding: 0.05rem 0.45rem;
+        border-radius: 4px;
+        background: $yellow;
+        color: $bg;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.post-card {
+    margin-bottom: 3.25rem;
+
+    &__title {
+        margin: 0 0 0.35rem;
+        @include heading-font(1.75rem);
+        line-height: 1.25;
+
+        @include mobile {
+            font-size: 1.5rem;
+        }
+
+        a {
+            @include reset-link($accent);
+            display: inline-block;
+            transition: color 0.15s, transform 0.2s ease;
+
+            &:hover {
+                color: $violet;
+                transform: translateX(3px);
+            }
+        }
+    }
+
+    &__excerpt {
+        margin: 0.5rem 0 0;
+    }
+}
+
+.empty {
+    color: $text-muted;
+    @include mono(0.95rem);
+}

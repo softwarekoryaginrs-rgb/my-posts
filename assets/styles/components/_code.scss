@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+
+.prose pre {
+    overflow-x: auto;
+    padding: 1.75rem $gutter $gutter;
+    border: 1px solid $border;
+    border-radius: $radius;
+    background: $bg-code;
+    box-shadow: 0 10px 30px -15px rgb(0 0 0 / 0.8), inset 0 1px 0 rgb(255 255 255 / 0.03);
+    font-size: 0.85rem;
+    line-height: 1.65;
+    tab-size: 4;
+
+    code {
+        font-family: $font-mono;
+        color: $text;
+        background: none;
+    }
+
+    // Full-bleed on phones.
+    @include mobile {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+}
+
+.code-block {
+    position: relative;
+
+    >pre {
+        margin: 0;
+    }
+
+    &[data-language]::before {
+        content: attr(data-language);
+        position: absolute;
+        top: 0;
+        left: $gutter;
+        padding: 0.1rem 0.6rem;
+        border-radius: 0 0 $radius-sm $radius-sm;
+        background: $border;
+        color: $text-muted;
+        @include mono(0.7rem);
+        text-transform: lowercase;
+    }
+
+    .prose & {
+        @include mobile {
+            margin-left: -$gutter-mobile;
+            margin-right: -$gutter-mobile;
+        }
+    }
+}
+
+.copy-code {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.15rem 0.55rem;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    background: $bg-elevated;
+    color: $text-muted;
+    @include mono(0.7rem);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+
+    .code-block:hover &,
+    &:focus-visible {
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $pink;
+        border-color: $pink;
+    }
+
+    @media (hover: none) {
+        opacity: 1;
+    }
+}

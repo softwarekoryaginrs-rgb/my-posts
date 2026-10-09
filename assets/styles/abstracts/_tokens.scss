@@ -1,0 +1,35 @@
+// Dark "late-night editor" palette: violet-black background,
+// hot pink + cyan accents borrowed from synthwave-ish code themes.
+
+$bg: #0d0b14;
+$bg-elevated: #15121f;
+$bg-code: #120f1c;
+$border: #2a2340;
+
+$text: #d9d2e9;
+$text-muted: #8a81a3;
+$text-comment: #6b6386;
+$heading: #f5f1ff;
+
+$pink: #ff6ac1;
+$violet: #b48cff;
+$cyan: #6fd3ff;
+$green: #8be9a8;
+$yellow: #ffd479;
+$orange: #ff9e64;
+$red: #ff6b81;
+
+$accent: $pink;
+$link: $cyan;
+
+$font-heading: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+$font-body: 'Merriweather', Georgia, serif;
+$font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+$measure: 42rem;
+$radius: 10px;
+$radius-sm: 6px;
+$gutter: 1.25rem;
+$gutter-mobile: 1rem;
+
+$breakpoint-mobile: 640px;

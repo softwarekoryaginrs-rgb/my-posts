@@ -1,0 +1,84 @@
+@use '../abstracts' as *;
+
+.page {
+    max-width: $measure;
+    margin: 0 auto;
+    padding: 2.5rem $gutter 3rem;
+
+    @include mobile {
+        padding: 1.75rem $gutter-mobile 2rem;
+    }
+}
+
+.site-header {
+    margin-bottom: 3.5rem;
+
+    @include mobile {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.site-title {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0;
+    @include heading-font(clamp(2.2rem, 9vw, 3.25rem), -0.03em);
+    line-height: 1.1;
+    white-space: nowrap;
+
+    a {
+        @include reset-link($heading);
+
+        &::after {
+            content: '_';
+            margin-left: 0.05em;
+            color: $pink;
+            animation: blink 1.1s steps(1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none;
+            }
+        }
+    }
+
+    &--small {
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+    }
+}
+
+.site-byline {
+    @include mono(clamp(0.75rem, 3.2vw, 0.95rem));
+    font-weight: 400;
+    letter-spacing: 0;
+    color: $text-muted;
+
+    .site-title--small & {
+        font-size: 0.75rem;
+    }
+
+    strong {
+        color: $pink;
+        font-weight: 600;
+    }
+}
+
+.site-description {
+    margin: 0.35rem 0 0;
+    color: $text-muted;
+    font-style: italic;
+}
+
+.site-footer {
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $border;
+    color: $text-muted;
+    @include mono(0.85rem);
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}

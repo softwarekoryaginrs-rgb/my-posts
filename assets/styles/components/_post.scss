@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.post {
+    &__header {
+        margin-bottom: 2.5rem;
+    }
+
+    &__title {
+        margin: 0 0 0.75rem;
+        color: $heading;
+        @include heading-font(clamp(2rem, 6vw, 2.75rem), -0.02em);
+        line-height: 1.15;
+    }
+}
+
+.post-nav {
+    margin-top: 4rem;
+    font-family: $font-heading;
+    font-weight: 700;
+
+    a {
+        @include reset-link($accent);
+    }
+}

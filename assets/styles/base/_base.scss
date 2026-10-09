@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+:root {
+    color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: $bg;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: $border $bg;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: $bg;
+    color: $text;
+    font-family: $font-body;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+::selection {
+    background: color.change($pink, $alpha: 0.35);
+    color: $heading;
+}
+
+a {
+    color: $link;
+    text-decoration-color: color.change($link, $alpha: 0.4);
+    text-underline-offset: 0.2em;
+    transition: color 0.15s, text-decoration-color 0.15s;
+
+    &:hover {
+        color: $pink;
+        text-decoration-color: currentColor;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid $cyan;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.prompt {
+    color: $green;
+    user-select: none;
+}
