@@ -33,8 +33,8 @@ services:
     League\CommonMark\Extension\GithubFlavoredMarkdownExtension:
         tags: ['twig.markdown.league_extension']
 
-    App\Service\Post\EventablePostService:
-        $postService: '@App\Service\Post\PostService'
+    App\Service\EventablePostService:
+        $postService: '@App\Service\PostService'
 
-    App\Service\Post\PostServiceInterface:
-        alias: App\Service\Post\EventablePostService
+    App\Service\PostServiceInterface:
+        alias: App\Service\EventablePostService
