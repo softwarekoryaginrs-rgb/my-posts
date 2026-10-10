@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <h1 class="site-title">
+        <a href="{{ path('app_post_index') }}">{{ blog.title }}</a>
+        <span class="site-byline">by <strong><a href="{{ path('app_me') }}">{{ blog.author }}</a></strong></span>
+    </h1>
+    <p class="site-description">{{ blog.description }}</p>
+{% endblock %}
+
+{% block body %}
+    {% for post in posts %}
+        <article class="post-card">
+            <h2 class="post-card__title">
+                <a href="{{ path('app_post_show', {slug: post.slug}) }}">{{ post.title }}</a>
+            </h2>
+            {{ include('post/_meta.html.twig') }}
+            <p class="post-card__excerpt">{{ post.shortDescription }}</p>
+        </article>
+    {% else %}
+        <p class="empty"><span class="prompt">$</span> ls posts/ <br>Nothing here yet — the first post is on its way.</p>
+    {% endfor %}
+{% endblock %}

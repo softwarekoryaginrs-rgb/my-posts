@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <h1 class="site-title">
+        <a href="{{ path('app_post_index') }}">Me</a>
+    </h1>
+{% endblock %}
+
+{% block body %}
+    <section>Roman Koryagin</section>
+    <section>
+        <ul>
+            <li><a href="https://github.com/softwarekoryaginrs-rgb">Github</a></li>
+            <li><a href="mailto:software.koryagin.rs@gmail.com">Email</a></li>
+        </ul>
+    </section>
+
+    <a class="back-link" href="{{ path('app_post_index') }}">← All posts</a>
+{% endblock %}

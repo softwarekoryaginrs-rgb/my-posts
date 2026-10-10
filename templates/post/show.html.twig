@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% set preview = preview|default(false) %}
+{% set seo = post_seo(post) %}
+
+{% block title %}{{ preview ? '[Preview] ' }}{{ seo.title }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block meta %}
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    {% if preview %}
+        <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if preview %}
+        <aside class="preview-banner" role="status">
+            <span class="preview-banner__label">Preview</span>
+            {% if post.deletedAt %}
+                This post is deleted and is not visible on the site.
+            {% elseif not post.published %}
+                This post is a draft and is not visible on the site.
+            {% else %}
+                This post is live: <a href="{{ path('app_post_show', {slug: post.slug}) }}">open on the site</a>.
+            {% endif %}
+        </aside>
+    {% endif %}
+
+    <article class="post">
+        <header class="post__header">
+            <h1 class="post__title">{{ post.title }}</h1>
+            {{ include('post/_meta.html.twig', {show_views: true}) }}
+        </header>
+
+        <div class="prose">
+            {{ post.text|markdown_to_html }}
+        </div>
+    </article>
+
+    <nav class="post-nav">
+        {% if preview %}
+            <a href="{{ path('admin_post_edit', {entityId: post.id}) }}">← Back to editing</a>
+        {% else %}
+            <a href="{{ path('app_post_index') }}">← All posts</a>
+        {% endif %}
+    </nav>
+{% endblock %}

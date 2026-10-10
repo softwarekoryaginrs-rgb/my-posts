@@ -1,0 +1,22 @@
+{# @var post \App\Entity\Post #}
+<div class="post-meta">
+    <time datetime="{{ post.createdAt|date('Y-m-d') }}">{{ post.createdAt|format_date('long', locale: blog.locale) }}</time>
+    <span class="post-meta__sep">·</span>
+    <span>{{ post.text|reading_time }} min read</span>
+    {% if show_views|default(false) %}
+        <span class="post-meta__sep">·</span>
+        <span>{{ post.viewsCount|format_number(locale: blog.locale) }} {{ post.viewsCount == 1 ? 'view' : 'views' }}</span>
+    {% endif %}
+</div>
+{% if post.tags is not empty %}
+    <ul class="tags">
+        {% for tag in post.tags %}
+            <li class="tag">
+                {% if tag.imagePath %}
+                    <img class="tag__icon" src="{{ asset(tag.imagePath) }}" alt="" width="14" height="14" loading="lazy">
+                {% endif %}
+                {{ tag.name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
