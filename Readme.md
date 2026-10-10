@@ -1,6 +1,6 @@
 # 🏗️ My Blog
 
-A simple website for writing my personal articles on programming and development.
+A simple website for writing my personal articles about programming and architecture.
 
 ### Koryagin Roman
 
