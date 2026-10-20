@@ -2,6 +2,7 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         blog: '%app.blog%'
+        gtag: '%env(default::string:GTAG)%'
 
 when@test:
     twig:

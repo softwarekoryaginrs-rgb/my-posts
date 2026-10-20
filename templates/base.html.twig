@@ -24,6 +24,17 @@
         <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
+        <!-- Google tag (gtag.js) -->
+        {% if gtag is defined and gtag is not empty %}
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{gtag}}"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '{{gtag}}');
+            </script>
+        {% endif %}
     </head>
     <body>
         <div class="page">
