@@ -6,7 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\SeoTemplate;
 use App\Repository\SeoTemplateRepository;
-use App\Service\Seo\PostSeoResolver;
+use App\Resolver\PostSeoResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
